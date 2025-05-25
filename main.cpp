@@ -22,8 +22,6 @@ __attribute__(( weak )) int swprintf(wchar_t *s, size_t n, const wchar_t *fmt, .
 }
 using namespace std;
 
-//使用myprintf输出一个用*打印的房子
-void printHouse(int width, int height);
 int main(void)
 {  
 	SystemClock_Config(); //系统时钟初始化成480MHz
@@ -41,45 +39,8 @@ int main(void)
 	str_cin >> a;
 	str_cin >> b;
 	myprintf("a=%d,b=%d\n", a, b);
-	printHouse(10, 6);
 	while (1) ;
 }
 
-//使用myprintf输出一个用*打印的房子,要有三角形的房顶，
-//房子身体为正方形。无论房子多大，房顶的高度都是房子身体高度的一半。房子的宽度和高度都是偶数。
-void printHouse(int width, int height)
-{
-	if (width % 2 != 0 || height % 2 != 0)
-	{
-		myprintf("width and height must be even numbers.\n");
-		return;
-	}
-	int roofHeight = height / 2;
-	int bodyHeight = height - roofHeight;
-	// 打印房顶
-	for (int i = 0; i < roofHeight; i++)
-	{
-		for (int j = 0; j < width; j++)
-		{
-			if (j >= width / 2 - i && j <= width / 2 + i)
-				myprintf("*");
-			else
-				myprintf(" ");
-		}
-		myprintf("\n");
-	}
-	// 打印房子身体
-	for (int i = 0; i < bodyHeight; i++)
-	{
-		for (int j = 0; j < width; j++)
-		{
-			if (j == 0 || j == width - 1)
-				myprintf("*");
-			else
-				myprintf(" ");
-		}
-		myprintf("\n");
-	}
-}
 
 

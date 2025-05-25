@@ -2,12 +2,17 @@
 
 void myprintf(const char* fmt, ...)
 {
+#ifndef DEBUG_OUT	
 	char buf[128]; // 根据需要调整缓冲区大小
 	va_list args;
 	va_start(args, fmt);
 	vsnprintf(buf, sizeof(buf), fmt, args);
 	va_end(args);
 	Usart_SendString(buf);
+#else	//nothing
+
+#endif // !DEGUB	
+	
 }
 
 
